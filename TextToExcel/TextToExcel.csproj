@@ -54,7 +54,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\DelegateCommand.cs" />
-    <Compile Include="Utils\DateTimeUtil.cs" />
+    <Compile Include="Commons\Filter\FilterChain.cs" />
+    <Compile Include="Commons\Filter\IFilter.cs" />
+    <Compile Include="Commons\Filter\KeywordFilter.cs" />
+    <Compile Include="Commons\Filter\NameAndIdCardFilter.cs" />
+    <Compile Include="Model\VerifyResult.cs" />
+    <Compile Include="Test\TestStream.cs" />
+    <Compile Include="Commons\Utils\DateTimeUtil.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -100,7 +106,6 @@
     <Resource Include="Resources\Images\ordering.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="Resources\Themes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

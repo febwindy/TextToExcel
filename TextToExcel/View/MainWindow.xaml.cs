@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using TextToExcel.Test;
 using TextToExcel.ViewModel;
 
 namespace TextToExcel
@@ -28,6 +29,8 @@ namespace TextToExcel
             // 初始化MainViewModel并绑定至DataContext
             _MainViewModel = new MainViewModel();
             this.DataContext = _MainViewModel;
+
+            TestStream.Test();
         }
     }
 }

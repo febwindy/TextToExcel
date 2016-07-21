@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using TextToExcel.Command;
-using TextToExcel.Utils;
+using TextToExcel.Commons.Utils;
 
 namespace TextToExcel.ViewModel
 {

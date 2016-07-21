@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace TextToExcel.Utils
+namespace TextToExcel.Commons.Utils
 {
     class DateTimeUtil
     {
