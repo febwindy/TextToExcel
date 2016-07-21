@@ -117,12 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EndDateTimeTip" xml:space="preserve">
+    <value>请选择结束日期</value>
+    <comment>结束日期提示信息</comment>
+  </data>
+  <data name="ExportMessageBoxTitle" xml:space="preserve">
+    <value>警告</value>
+    <comment>导出时消息提示标题</comment>
+  </data>
   <data name="MainWindowHeight" xml:space="preserve">
     <value>100</value>
     <comment>主窗口高度</comment>
   </data>
   <data name="MainWindowIcon" xml:space="preserve">
-    <value>pack://application:,,,/Resources/images/ordering.png</value>
+    <value>pack://application:,,,/Resources/Images/ordering.png</value>
     <comment>icon</comment>
   </data>
   <data name="MainWindowTitle" xml:space="preserve">
@@ -132,5 +140,17 @@
   <data name="MainWindowWidth" xml:space="preserve">
     <value>540</value>
     <comment>主窗口宽度</comment>
+  </data>
+  <data name="StartAndEndDateTimeDiffTip" xml:space="preserve">
+    <value>开始日期与结束日期时间只能在一个月内</value>
+    <comment>开始日期与结束日期提示信息</comment>
+  </data>
+  <data name="StartDateTimeTip" xml:space="preserve">
+    <value>请选择开始日期</value>
+    <comment>开始日期提示信息</comment>
+  </data>
+  <data name="StartGEEndDateTime" xml:space="preserve">
+    <value>开始日期必须小于等于结束日期</value>
+    <comment>开始日期必须小于等于结束日期提示信息</comment>
   </data>
 </root>

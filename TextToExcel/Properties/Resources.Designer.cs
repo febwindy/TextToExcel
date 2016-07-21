@@ -61,6 +61,24 @@ namespace TextToExcel.Properties {
         }
         
         /// <summary>
+        ///   查找类似 请选择结束日期 的本地化字符串。
+        /// </summary>
+        public static string EndDateTimeTip {
+            get {
+                return ResourceManager.GetString("EndDateTimeTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 警告 的本地化字符串。
+        /// </summary>
+        public static string ExportMessageBoxTitle {
+            get {
+                return ResourceManager.GetString("ExportMessageBoxTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 100 的本地化字符串。
         /// </summary>
         public static string MainWindowHeight {
@@ -70,7 +88,7 @@ namespace TextToExcel.Properties {
         }
         
         /// <summary>
-        ///   查找类似 pack://application:,,,/Resources/images/ordering.png 的本地化字符串。
+        ///   查找类似 pack://application:,,,/Resources/Images/ordering.png 的本地化字符串。
         /// </summary>
         public static string MainWindowIcon {
             get {
@@ -93,6 +111,33 @@ namespace TextToExcel.Properties {
         public static string MainWindowWidth {
             get {
                 return ResourceManager.GetString("MainWindowWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 开始日期与结束日期时间只能在一个月内 的本地化字符串。
+        /// </summary>
+        public static string StartAndEndDateTimeDiffTip {
+            get {
+                return ResourceManager.GetString("StartAndEndDateTimeDiffTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 请选择开始日期 的本地化字符串。
+        /// </summary>
+        public static string StartDateTimeTip {
+            get {
+                return ResourceManager.GetString("StartDateTimeTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 开始日期必须小于等于结束日期 的本地化字符串。
+        /// </summary>
+        public static string StartGEEndDateTime {
+            get {
+                return ResourceManager.GetString("StartGEEndDateTime", resourceCulture);
             }
         }
     }

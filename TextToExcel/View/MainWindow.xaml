@@ -6,25 +6,27 @@
         mc:Ignorable="d" x:Class="TextToExcel.MainWindow" Name="MainWin"
         d:DesignHeight="100" d:DesignWidth="540">
     <StackPanel>
+
         <!-- 菜单 -->
         <Menu>
             <MenuItem Header="配置"/>
-            <MenuItem Header="关于"/>
         </Menu>
+
         <StackPanel Margin="5,10,5,0">
             <!-- 条件筛选 -->
             <WrapPanel Margin="0,0,0,10">
                 <WrapPanel Margin="10,0,10,0">
                     <Label Content="开始日期:"/>
-                    <DatePicker Width="100"/>
+                    <DatePicker Name="StartDatePicker" Width="100"/>
                 </WrapPanel>
                 <WrapPanel Margin="10,0,10,0">
                     <Label Content="结束日期:"/>
-                    <DatePicker Width="100"/>
+                    <DatePicker Name="EndDatePicker" Width="100"/>
                 </WrapPanel>
-                <Button Width="50" BorderBrush="#FFC7C7C7" Margin="10,0,10,0" Content="查看" Command="{Binding detailCommand}" CommandParameter="{Binding ElementName=MainWin}"/>
-                <Button Width="50" BorderBrush="#FFC7C7C7" Margin="10,0,10,0" Content="导出" Command="{Binding exportCommand}" CommandParameter="导出"/>
+                <Button Width="50" BorderBrush="#FFC7C7C7" Margin="10,0,10,0" Content="预览" Command="{Binding PreviewCommand}" CommandParameter="{Binding ElementName=MainWin}"/>
+                <Button Width="50" BorderBrush="#FFC7C7C7" Margin="10,0,10,0" Content="导出" Command="{Binding ExportCommand}" CommandParameter="{Binding ElementName=MainWin}"/>
             </WrapPanel>
         </StackPanel>
+        
     </StackPanel>
 </Window>

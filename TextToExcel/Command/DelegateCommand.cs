@@ -7,9 +7,9 @@ using System.Windows.Input;
 
 namespace TextToExcel.Command
 {
-    /**
-     * 委托command 
-     **/
+    //
+    // 摘要:
+    //     委托command类 
     class DelegateCommand : ICommand
     {
         public delegate void ICommandOnExecute(object parameter);
