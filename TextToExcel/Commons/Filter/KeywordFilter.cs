@@ -2,19 +2,20 @@
 
 namespace TextToExcel.Commons.Filter
 {
-    //
-    // 摘要:
-    //     关键字过滤器
+    /// <summary>
+    /// 关键字过滤器
+    /// 作者:李文禾
+    /// </summary>
     class KeywordFilter : IFilter
     {
-        //
-        // 摘要:
-        //     关键字容器
+        /// <summary>
+        /// 关键字容器
+        /// </summary>
         private List<string> Keywords = new List<string>();
-
-        //
-        // 摘要:
-        //     初始化的时候,添加关键字
+ 
+        /// <summary>
+        /// 初始化的时候,添加关键字
+        /// </summary>
         public KeywordFilter()
         {
             Keywords.Add("不通过");

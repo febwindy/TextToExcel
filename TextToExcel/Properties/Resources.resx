@@ -142,7 +142,7 @@
     <comment>主窗口宽度</comment>
   </data>
   <data name="StartAndEndDateTimeDiffTip" xml:space="preserve">
-    <value>开始日期与结束日期时间只能在一个月内</value>
+    <value>开始日期与结束日期时间差最多为30天</value>
     <comment>开始日期与结束日期提示信息</comment>
   </data>
   <data name="StartDateTimeTip" xml:space="preserve">
@@ -152,5 +152,9 @@
   <data name="StartGEEndDateTime" xml:space="preserve">
     <value>开始日期必须小于等于结束日期</value>
     <comment>开始日期必须小于等于结束日期提示信息</comment>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Template" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Template.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

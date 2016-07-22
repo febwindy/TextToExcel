@@ -6,10 +6,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace TextToExcel.Commons.Filter
-{
-    //
-    // 摘要:
-    //     姓名和身份证过滤器
+{  
+    /// <summary>
+    /// 姓名和身份证过滤器
+    /// 作者:李文禾
+    /// </summary>
     class NameAndIdCardFilter : IFilter
     {
         #region IFilter.Member
@@ -25,9 +26,16 @@ namespace TextToExcel.Commons.Filter
                 if (sArr[i].IndexOf(@".jpg") != -1)
                 {
                     sArr[i] = sArr[i].Replace(@".jpg", "");
-                    foreach (string str in Regex.Split(sArr[i], @"_"))
+                    string[] tmpSArr = Regex.Split(sArr[i], @"_");
+                    if (tmpSArr.Length == 2)
                     {
-                        newStrList.Add(str);
+                        newStrList.Add(tmpSArr[0]);
+                        newStrList.Add(tmpSArr[1]);
+                    }
+                    else
+                    {
+                        newStrList.Add(tmpSArr[0]);
+                        newStrList.Add(null);
                     }
                 }
                 else

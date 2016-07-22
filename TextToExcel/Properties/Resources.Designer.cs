@@ -115,7 +115,7 @@ namespace TextToExcel.Properties {
         }
         
         /// <summary>
-        ///   查找类似 开始日期与结束日期时间只能在一个月内 的本地化字符串。
+        ///   查找类似 开始日期与结束日期时间差最多为30天 的本地化字符串。
         /// </summary>
         public static string StartAndEndDateTimeDiffTip {
             get {
@@ -138,6 +138,16 @@ namespace TextToExcel.Properties {
         public static string StartGEEndDateTime {
             get {
                 return ResourceManager.GetString("StartGEEndDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] Template {
+            get {
+                object obj = ResourceManager.GetObject("Template", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

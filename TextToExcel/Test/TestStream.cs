@@ -1,8 +1,15 @@
-﻿using System;
+﻿using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using TextToExcel.Commons.Filter;
+using TextToExcel.Commons.Utils;
 
 namespace TextToExcel.Test
 {
@@ -36,17 +43,36 @@ namespace TextToExcel.Test
 
                 string str;
                 string outStr;
+                List<string[]> data = new List<string[]>();
                 DateTime dt1 = DateTime.Now;
-                while (null != (str = reader.ReadLine()))
+                //FileStream xlsStream = File.Open(TextToExcel.Properties.Resources.ExcelXlsTemplate, FileMode.Open, FileAccess.Read);
+                using (MemoryStream ms = new MemoryStream(TextToExcel.Properties.Resources.Template, false))
                 {
-                    //Console.WriteLine(Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(str)));
-                    FilterChain chain = new FilterChain().AddFilter(new NameAndIdCardFilter()).AddFilter(new KeywordFilter());
-                    if (chain.DoFilter(str, out outStr))
+                    while (null != (str = reader.ReadLine()))
                     {
-                        Console.WriteLine(outStr);
+                        //Console.WriteLine(Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(str)));
+                        FilterChain chain = new FilterChain().AddFilter(new NameAndIdCardFilter()).AddFilter(new KeywordFilter());
+                        if (chain.DoFilter(str, out outStr))
+                        {
+                            string[] strArr = Regex.Split(outStr, " ");
+                            string[] tempStrArr = new string[strArr.Length - 1];
+                            for (int ix = 0; ix < tempStrArr.Length; ix++)
+                            {
+                                if (ix == 0)
+                                {
+                                    tempStrArr[ix] = strArr[0] + " " + strArr[1];
+                                }
+                                else
+                                {
+                                    tempStrArr[ix] = strArr[ix + 1];
+                                }
+                            }
+                            data.Add(tempStrArr);
+                        }
                     }
+                    ExcelExportUtil.Export(@"F:\", "222.xls", data, ms);
+                    Console.WriteLine((DateTime.Now - dt1));
                 }
-                Console.WriteLine((DateTime.Now - dt1));
             }
 
             //Build();
@@ -67,6 +93,11 @@ namespace TextToExcel.Test
             writer.Flush();
             writer.Close();
             file.Close();
+        }
+
+        public static void main(string[] args)
+        {
+            Console.WriteLine("hello world1");
         }
     }
 }

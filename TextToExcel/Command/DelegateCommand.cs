@@ -7,9 +7,10 @@ using System.Windows.Input;
 
 namespace TextToExcel.Command
 {
-    //
-    // 摘要:
-    //     委托command类 
+    /// <summary>
+    /// 委托command类
+    /// 作者:李文禾
+    /// </summary>
     class DelegateCommand : ICommand
     {
         public delegate void ICommandOnExecute(object parameter);
