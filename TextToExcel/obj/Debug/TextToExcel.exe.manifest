@@ -42,6 +42,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="edtFTPnet.dll" size="167936">
+      <assemblyIdentity name="edtFTPnet" version="2.2.3.0" publicKeyToken="4B0C991F43097782" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>v8l9fAjFDAXpoCIwCGuj5o9yKsgsB+dEddBg4VjfpYE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ICSharpCode.SharpZipLib.dll" size="200704">
       <assemblyIdentity name="ICSharpCode.SharpZipLib" version="0.86.0.518" publicKeyToken="1B03E6ACF1164F73" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -102,14 +114,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TextToExcel.exe" size="59904">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TextToExcel.exe" size="60928">
       <assemblyIdentity name="TextToExcel" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DJW8pYuznvIBU3PCCg9/3Yo/T8IgRqxbbst2IIBTC7Q=</dsig:DigestValue>
+        <dsig:DigestValue>za4sZMzNdGLW4aDVZu4b4yaI55p7yD2G0vatTF80qWY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -23,3 +23,4 @@ C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\TextToExcel.applicati
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\TextToExcel.exe
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\TextToExcel.pdb
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\TextToExcel.csprojResolveAssemblyReference.cache
+C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\edtFTPnet.dll

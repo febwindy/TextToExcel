@@ -1,8 +1,10 @@
-﻿using System;
+﻿using EnterpriseDT.Net.Ftp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using TextToExcel.Command;
@@ -57,60 +59,94 @@ namespace TextToExcel.ViewModel
             fbd.RootFolder = System.Environment.SpecialFolder.MyComputer;
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                using (FileStream fs = File.OpenRead(@"F:\VerifyResult_2016-06-23.txt"))
+                // 初始化ftp服务器参数
+                FTPConnection connection = new FTPConnection();
+                connection.UserName = "root";
+                connection.Password = "411934049";
+                connection.ServerAddress = "192.168.10.4";
+                connection.CloseStreamsAfterTransfer = false;
+
+                // 连接ftp服务器
+                connection.Connect();
+                connection.ChangeWorkingDirectory("/opt/log");
+                string[] files = connection.GetFiles();
+
+                // 读取内容
+                List<string> filenames = new List<string>();
+                foreach (string file in files)
                 {
-                    if (fs.CanRead)
+                    int firstIndex = file.IndexOf("_") + 1;
+                    int lastIndex = file.IndexOf(".txt");
+                    string substr = file.Substring(firstIndex, lastIndex - firstIndex);
+
+                    DateTime dt = DateTimeUtil.ConvertDateTime(substr, DateTimeUtil.DATE_FORMAT);
+                    if (dt >= startDateTime && dt <= endDateTime)
                     {
-                        int i = 0;
-                        int buffer = 32;
-
-                        byte[] bytes = new byte[fs.Length];
-                        byte[] tmpBytes = new byte[buffer];
-
-                        while ((i = fs.Read(tmpBytes, 0, buffer)) > 0)
-                        {
-                            long aviLength = fs.Length - fs.Position;
-                            for (long j = 0; j < buffer; j++)
-                            {
-                                bytes[fs.Position - buffer + j] = tmpBytes[j];
-                            }
-                            buffer = buffer < aviLength ? buffer : (int)aviLength;
-                        }
-
-                        MemoryStream bytesMs = new MemoryStream(bytes);
-                        StreamReader bytesReader = new StreamReader(bytesMs, Encoding.Default);
-
-                        string readLine;
-                        string outReadLine;
-                        List<string[]> data = new List<string[]>();
-                        while (null != (readLine = bytesReader.ReadLine()))
-                        {
-                            FilterChain chain = new FilterChain()
-                                                                .AddFilter(new NameAndIdCardFilter())
-                                                                .AddFilter(new KeywordFilter());
-                            if (chain.DoFilter(readLine, out outReadLine))
-                            {
-                                string[] strArr = Regex.Split(outReadLine, " ");
-                                string[] tempStrArr = new string[strArr.Length - 1];
-                                for (int ix = 0; ix < tempStrArr.Length; ix++)
-                                {
-                                    if (ix == 0)
-                                    {
-                                        tempStrArr[ix] = strArr[0] + " " + strArr[1];
-                                    }
-                                    else
-                                    {
-                                        tempStrArr[ix] = strArr[ix + 1];
-                                    }
-                                }
-                                data.Add(tempStrArr);
-                            }
-                        }
-
-                        MemoryStream templateMs = new MemoryStream(TextToExcel.Properties.Resources.Template, false);
-                        ExcelExportUtil.Export(fbd.SelectedPath, "333.xls", data, templateMs);
+                        filenames.Add(file);
                     }
                 }
+
+                // 异步处理内容
+                foreach (string file in filenames)
+                {
+                    new Task(
+                         delegate(object filename)
+                         {
+                            // 初始化ftp服务器参数
+                            FTPConnection _connection = new FTPConnection();
+                            _connection.UserName = "root";
+                            _connection.Password = "411934049";
+                            _connection.ServerAddress = "192.168.10.4";
+                            _connection.CloseStreamsAfterTransfer = false;
+
+                            // 连接ftp服务器
+                            _connection.Connect();
+                            _connection.ChangeWorkingDirectory("/opt/log");
+
+                            // 下载数据流
+                            MemoryStream fileMs = new MemoryStream();
+                            _connection.DownloadStream(fileMs, filename.ToString());
+                            fileMs.Seek(0, SeekOrigin.Begin);
+
+                            // 读取流中的内容
+                            StreamReader reader = new StreamReader(fileMs, Encoding.UTF8);
+                            string str = reader.ReadLine();
+                            List<string[]> data = new List<string[]>();
+                            while (null != str)
+                            {
+                                FilterChain chain = new FilterChain().AddFilter(new NameAndIdCardFilter())
+                                                                     .AddFilter(new KeywordFilter());
+                                string outStr;
+                                if (chain.DoFilter(str, out outStr))
+                                {
+                                    string[] strArr = Regex.Split(outStr, " ");
+                                    string[] tempStrArr = new string[strArr.Length - 1];
+                                    for (int ix = 0; ix < tempStrArr.Length; ix++)
+                                    {
+                                        if (ix == 0)
+                                        {
+                                            tempStrArr[ix] = strArr[0] + " " + strArr[1];
+                                        }
+                                        else
+                                        {
+                                            tempStrArr[ix] = strArr[ix + 1];
+                                        }
+                                    }
+                                    data.Add(tempStrArr);
+                                }
+                                str = reader.ReadLine();
+                            }
+
+                            MemoryStream templateMs = new MemoryStream(TextToExcel.Properties.Resources.Template, false);
+                            ExcelExportUtil.Export(fbd.SelectedPath, filename.ToString().Replace(".txt", ".xls"), data, templateMs);
+
+                            reader.Close();
+                            fileMs.Close();
+                            _connection.Close();
+
+                        }, file).Start();
+                }
+                connection.Close();
             }
             else
             {

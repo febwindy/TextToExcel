@@ -63,6 +63,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="edtFTPnet">
+      <HintPath>..\..\edtftpnet-2.2.3\bin\edtFTPnet.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\Net20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
