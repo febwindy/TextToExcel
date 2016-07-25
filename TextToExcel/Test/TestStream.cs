@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using TextToExcel.Commons.Filter;
@@ -99,5 +100,18 @@ namespace TextToExcel.Test
         {
             Console.WriteLine("hello world1");
         }
+
+        public static void TestResources()
+        {
+            WritePrivateProfileString("Test", "name", "liwenhe", @"F:\Conf.ini");
+        }
+
+        [DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern bool WritePrivateProfileString(
+            string lpAppName, string lpKeyName, string lpString, string lpFileName);
+        [DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern int GetPrivateProfileString(
+            string lpAppName, string lpKeyName, string lpDefault, StringBuilder lpReturnedString,
+            int nSize, string lpFileName);
     }
 }

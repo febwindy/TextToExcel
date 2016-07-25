@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\
+C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\
 TextToExcel
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\App.xaml
 2-1185943444
 
-241660338905
+24-1744145876
 202060620916
 View\ConfWindow.xaml;View\MainWindow.xaml;
 

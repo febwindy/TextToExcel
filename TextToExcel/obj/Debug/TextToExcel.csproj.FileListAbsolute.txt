@@ -3,13 +3,16 @@ C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\TextToExcel.exe.manif
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\TextToExcel.application
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\TextToExcel.exe
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\TextToExcel.pdb
+C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\edtFTPnet.dll
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\ICSharpCode.SharpZipLib.dll
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\NPOI.dll
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\NPOI.OOXML.dll
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\NPOI.OpenXml4Net.dll
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\NPOI.OpenXmlFormats.dll
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\NPOI.xml
+C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\View\ConfWindow.baml
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\App.baml
+C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\View\ConfWindow.g.cs
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\View\MainWindow.g.cs
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\App.g.cs
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\TextToExcel_MarkupCompile.cache
@@ -22,5 +25,3 @@ C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\TextToExcel.exe.manif
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\TextToExcel.application
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\TextToExcel.exe
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\TextToExcel.pdb
-C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Debug\TextToExcel.csprojResolveAssemblyReference.cache
-C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Debug\edtFTPnet.dll

@@ -1,0 +1,41 @@
+﻿<Window x:Class="TextToExcel.View.ConfWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FTP配置" Height="220" Width="500">
+    <Grid Background="#eeeeee">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0" Background="#fefefe" Margin="0,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="108*"/>
+                <ColumnDefinition Width="197*"/>
+                <ColumnDefinition Width="49*"/>
+                <ColumnDefinition Width="128*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="地址:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Row="0" Grid.Column="2" Content="端口:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="用户名:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="密码:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="远程路径:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+            <TextBox Name="Address" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="25" Margin="5,0,5,0" VerticalContentAlignment="Center" Text="{Binding _ConfModel.Address}"/>
+            <TextBox Name="Port" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Height="25" Margin="5,0,65,0" VerticalContentAlignment="Center" Text="{Binding _ConfModel.Port}"/>
+            <CheckBox Name="Anonymous" Content="匿名" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="13,10,0,10" Click="AnonymousConfFTPWindowClick" Visibility="Hidden"/>
+            <TextBox Name="Username" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="25" Margin="5,0,5,0" VerticalContentAlignment="Center" Text="{Binding _ConfModel.Username}"/>
+            <PasswordBox Name="Password" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Height="25" Margin="5,0,5,0" VerticalContentAlignment="Center"/>
+            <TextBox Name="Path" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Height="25" Margin="5,0,65,0" VerticalContentAlignment="Center" Text="{Binding _ConfModel.Path}"/>
+        </Grid>
+        <WrapPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Button Name="ConnectBtn" Content="连接" Width="60" Height="30" Margin="5,0,5,0" Click="ConnectConfFTPWindowClick"/>
+            <Button Name="CloseBtn" Content="关闭" Width="60" Height="30" Margin="5,0,5,0" Click="CloseConfFTPWindowClick"/>
+        </WrapPanel>
+    </Grid>
+</Window>

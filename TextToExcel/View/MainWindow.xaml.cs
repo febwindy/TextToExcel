@@ -2,12 +2,14 @@
 using System.Windows;
 using System.Windows.Media.Imaging;
 using TextToExcel.Test;
+using TextToExcel.View;
 using TextToExcel.ViewModel;
 
 namespace TextToExcel
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
+    /// 作者:李文禾
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -29,6 +31,12 @@ namespace TextToExcel
             // 初始化MainViewModel并绑定至DataContext
             _MainViewModel = new MainViewModel();
             this.DataContext = _MainViewModel;
+        }
+
+        private void FTPConfClick(object sender, RoutedEventArgs e)
+        {
+            ConfWindow confWindow = new ConfWindow();
+            confWindow.ShowDialog();
         }
     }
 }

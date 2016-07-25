@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>C:\Users\liwenhe\Desktop\test\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -108,10 +108,18 @@
     <Compile Include="Commons\Filter\KeywordFilter.cs" />
     <Compile Include="Commons\Filter\NameAndIdCardFilter.cs" />
     <Compile Include="Commons\Utils\ExcelExportUtil.cs" />
-    <Compile Include="Model\VerifyResult.cs" />
+    <Compile Include="Commons\Utils\IniConfUtil.cs" />
+    <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\ConfModel.cs" />
+    <Compile Include="Model\VerifyResultModel.cs" />
     <Compile Include="Test\TestStream.cs" />
     <Compile Include="Commons\Utils\DateTimeUtil.cs" />
+    <Compile Include="ViewModel\ConfViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Page Include="View\ConfWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,6 +127,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\ConfWindow.xaml.cs">
+      <DependentUpon>ConfWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

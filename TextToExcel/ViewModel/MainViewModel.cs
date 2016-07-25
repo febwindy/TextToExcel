@@ -10,9 +10,14 @@ using System.Windows.Forms;
 using TextToExcel.Command;
 using TextToExcel.Commons.Filter;
 using TextToExcel.Commons.Utils;
+using TextToExcel.Test;
 
 namespace TextToExcel.ViewModel
 {
+    /// <summary>
+    /// MainViewModel
+    /// 作者:李文禾
+    /// </summary>
     class MainViewModel
     {
         /// <summary>
@@ -32,6 +37,7 @@ namespace TextToExcel.ViewModel
         {
             ExportCommand = new DelegateCommand(ExecuteExport, CanExecuteExport);
             PreviewCommand = new DelegateCommand(ExecutePreview, CanExecutePreview);
+            TestStream.TestResources();
         }
 
         /// <summary>

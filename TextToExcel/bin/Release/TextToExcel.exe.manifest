@@ -114,14 +114,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TextToExcel.exe" size="67584">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TextToExcel.exe" size="67072">
       <assemblyIdentity name="TextToExcel" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>E6GUUqPrf5kanWlW7ZhYxhE/qLZG3JtmYr6vGJUcgMk=</dsig:DigestValue>
+        <dsig:DigestValue>IkXZ5Aus+PTowHUIV9HqIWqJ/FSvXRHuMwgXHSWZN24=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

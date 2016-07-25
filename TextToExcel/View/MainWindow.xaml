@@ -9,7 +9,7 @@
 
         <!-- 菜单 -->
         <Menu>
-            <MenuItem Header="配置"/>
+            <MenuItem Header="FTP配置" Click="FTPConfClick"/>
         </Menu>
 
         <StackPanel Margin="5,10,5,0">
