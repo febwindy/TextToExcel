@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfFileIsNotExist" xml:space="preserve">
+    <value>请设置FTP配置信息</value>
+    <comment>请设置FTP配置信息</comment>
+  </data>
   <data name="EndDateTimeTip" xml:space="preserve">
     <value>请选择结束日期</value>
     <comment>结束日期提示信息</comment>
@@ -154,7 +158,10 @@
     <comment>开始日期必须小于等于结束日期提示信息</comment>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Template" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Template_xls" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Template.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Template_xlsx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Template.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -61,6 +61,15 @@ namespace TextToExcel.Properties {
         }
         
         /// <summary>
+        ///   查找类似 请设置FTP配置信息 的本地化字符串。
+        /// </summary>
+        public static string ConfFileIsNotExist {
+            get {
+                return ResourceManager.GetString("ConfFileIsNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 请选择结束日期 的本地化字符串。
         /// </summary>
         public static string EndDateTimeTip {
@@ -144,9 +153,19 @@ namespace TextToExcel.Properties {
         /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
-        public static byte[] Template {
+        public static byte[] Template_xls {
             get {
-                object obj = ResourceManager.GetObject("Template", resourceCulture);
+                object obj = ResourceManager.GetObject("Template_xls", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        public static byte[] Template_xlsx {
+            get {
+                object obj = ResourceManager.GetObject("Template_xlsx", resourceCulture);
                 return ((byte[])(obj));
             }
         }

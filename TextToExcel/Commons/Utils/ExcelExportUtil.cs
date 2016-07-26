@@ -1,5 +1,5 @@
-﻿using NPOI.HSSF.UserModel;
-using NPOI.SS.UserModel;
+﻿using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -45,12 +45,12 @@ namespace TextToExcel.Commons.Utils
             IWorkbook workbook;
             if (null == template)
             {
-                workbook = new HSSFWorkbook();
+                workbook = new XSSFWorkbook();
                 workbook.CreateSheet("sheet1");
             }
             else
             {
-                workbook = new HSSFWorkbook(template);
+                workbook = new XSSFWorkbook(template);
             }
 
             // 注入数据
@@ -58,11 +58,11 @@ namespace TextToExcel.Commons.Utils
             IRow row = sheet.GetRow(0);
             if (null != row)
             {
-                int numbersOfCol = row.Cells.Count;
-                for (int i = 0; i < data.Count; i++)
+                Int32 numbersOfCol = row.Cells.Count;
+                for (Int32 i = 0; i < data.Count; i++)
                 {
                     sheet.CreateRow(i + 1).CreateCell(0).SetCellValue(i + 1);
-                    for (int j = 0; j < data[i].Length; j++)
+                    for (Int32 j = 0; j < data[i].Length; j++)
                     {
                         if ((j + 1) == numbersOfCol)
                         {
@@ -74,10 +74,10 @@ namespace TextToExcel.Commons.Utils
             }
             else
             {
-                for (int i = 0; i < data.Count; i++)
+                for (Int32 i = 0; i < data.Count; i++)
                 {
                     sheet.CreateRow(i + 1).CreateCell(0).SetCellValue(i + 1);
-                    for (int j = 0; j < data[i].Length; j++)
+                    for (Int32 j = 0; j < data[i].Length; j++)
                     {
                         sheet.GetRow(i + 1).CreateCell(j + 1).SetCellValue(data[i][j]);
                     }

@@ -47,7 +47,7 @@ namespace TextToExcel.Test
                 List<string[]> data = new List<string[]>();
                 DateTime dt1 = DateTime.Now;
                 //FileStream xlsStream = File.Open(TextToExcel.Properties.Resources.ExcelXlsTemplate, FileMode.Open, FileAccess.Read);
-                using (MemoryStream ms = new MemoryStream(TextToExcel.Properties.Resources.Template, false))
+                using (MemoryStream ms = new MemoryStream(TextToExcel.Properties.Resources.Template_xlsx, false))
                 {
                     while (null != (str = reader.ReadLine()))
                     {
@@ -85,11 +85,11 @@ namespace TextToExcel.Test
             {
                 File.Delete(@"F:\test.txt");
             }
-            FileStream file = File.OpenWrite(@"F:\test.txt");
+            FileStream file = File.OpenWrite(@"F:\VerifyResult_2016-06-27.txt");
             StreamWriter writer = new StreamWriter(file, Encoding.UTF8);
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1000000; i++)
             {
-                writer.WriteLine("2016/6/23 14:07:27  史专扬_231002198004171038.jpg  0.61  通过  正例");
+                writer.WriteLine("2016/6/27 14:07:27  史专扬_231002198004171038.jpg  0.61  通过  正例");
             }
             writer.Flush();
             writer.Close();

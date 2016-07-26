@@ -56,7 +56,7 @@ namespace TextToExcel.View
             // 判断连接是否成功,根据返回结果给出相应操作
             if (false == result)
             {
-                MessageBox.Show("连接失败,请确保您输入的信息正确!", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("连接失败,请检查您输入的信息正确及FTP服务器是否启动!", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

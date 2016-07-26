@@ -7,10 +7,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media;
 using TextToExcel.Command;
 using TextToExcel.Commons.Filter;
 using TextToExcel.Commons.Utils;
-using TextToExcel.Test;
+using TextToExcel.View;
 
 namespace TextToExcel.ViewModel
 {
@@ -20,6 +21,8 @@ namespace TextToExcel.ViewModel
     /// </summary>
     class MainViewModel
     {
+        private IniConfUtil _IniConfUtil { get; set; }
+
         /// <summary>
         /// 定义导出功能Command对象
         /// </summary>
@@ -35,9 +38,9 @@ namespace TextToExcel.ViewModel
         /// </summary>
         public MainViewModel()
         {
+            _IniConfUtil = IniConfUtil.getInstance();
             ExportCommand = new DelegateCommand(ExecuteExport, CanExecuteExport);
             PreviewCommand = new DelegateCommand(ExecutePreview, CanExecutePreview);
-            TestStream.TestResources();
         }
 
         /// <summary>
@@ -67,14 +70,15 @@ namespace TextToExcel.ViewModel
             {
                 // 初始化ftp服务器参数
                 FTPConnection connection = new FTPConnection();
-                connection.UserName = "root";
-                connection.Password = "411934049";
-                connection.ServerAddress = "192.168.10.4";
+                connection.UserName = _IniConfUtil.GetPrivateProfileString("Username");
+                connection.Password = _IniConfUtil.GetPrivateProfileString("Password");
+                connection.ServerAddress = _IniConfUtil.GetPrivateProfileString("Address");
+                connection.ServerPort = Convert.ToInt32(_IniConfUtil.GetPrivateProfileString("Port"));
+                connection.ServerDirectory = _IniConfUtil.GetPrivateProfileString("Path");
                 connection.CloseStreamsAfterTransfer = false;
 
                 // 连接ftp服务器
                 connection.Connect();
-                connection.ChangeWorkingDirectory("/opt/log");
                 string[] files = connection.GetFiles();
 
                 // 读取内容
@@ -92,66 +96,104 @@ namespace TextToExcel.ViewModel
                     }
                 }
 
-                // 异步处理内容
-                foreach (string file in filenames)
+                LoadWindow _LoadWindow = new LoadWindow("导出中", 10, 10, Color.FromRgb(51, 51, 255), 6);
+
+                // 异步处理导出任务
+                _LoadWindow.Dispatcher.BeginInvoke(new Action(() =>
                 {
-                    new Task(
-                         delegate(object filename)
-                         {
-                            // 初始化ftp服务器参数
-                            FTPConnection _connection = new FTPConnection();
-                            _connection.UserName = "root";
-                            _connection.Password = "411934049";
-                            _connection.ServerAddress = "192.168.10.4";
-                            _connection.CloseStreamsAfterTransfer = false;
+                    // 异步处理内容
+                    List<Task> taskList = new List<Task>();
+                    foreach (string file in filenames)
+                    {
+                        taskList.Add(new Task(
+                             delegate(object filename)
+                             {
+                                 // 初始化ftp服务器参数
+                                 FTPConnection _connection = new FTPConnection();
+                                 _connection.UserName = _IniConfUtil.GetPrivateProfileString("Username");
+                                 _connection.Password = _IniConfUtil.GetPrivateProfileString("Password");
+                                 _connection.ServerAddress = _IniConfUtil.GetPrivateProfileString("Address");
+                                 _connection.ServerPort = Convert.ToInt32(_IniConfUtil.GetPrivateProfileString("Port"));
+                                 _connection.ServerDirectory = _IniConfUtil.GetPrivateProfileString("Path");
+                                 _connection.CloseStreamsAfterTransfer = false;
 
-                            // 连接ftp服务器
-                            _connection.Connect();
-                            _connection.ChangeWorkingDirectory("/opt/log");
+                                 // 连接ftp服务器
+                                 _connection.Connect();
 
-                            // 下载数据流
-                            MemoryStream fileMs = new MemoryStream();
-                            _connection.DownloadStream(fileMs, filename.ToString());
-                            fileMs.Seek(0, SeekOrigin.Begin);
+                                 // 下载数据流
+                                 MemoryStream fileMs = new MemoryStream();
+                                 _connection.DownloadStream(fileMs, filename.ToString());
+                                 fileMs.Seek(0, SeekOrigin.Begin);
 
-                            // 读取流中的内容
-                            StreamReader reader = new StreamReader(fileMs, Encoding.UTF8);
-                            string str = reader.ReadLine();
-                            List<string[]> data = new List<string[]>();
-                            while (null != str)
+                                 // 读取流中的内容
+                                 StreamReader reader = new StreamReader(fileMs, Encoding.UTF8);
+                                 string str = reader.ReadLine();
+                                 List<string[]> data = new List<string[]>();
+                                 while (null != str)
+                                 {
+                                     FilterChain chain = new FilterChain().AddFilter(new NameAndIdCardFilter())
+                                                                          .AddFilter(new KeywordFilter());
+                                     string outStr;
+                                     if (chain.DoFilter(str, out outStr))
+                                     {
+                                         string[] strArr = Regex.Split(outStr, " ");
+                                         string[] tempStrArr = new string[strArr.Length - 1];
+                                         for (Int32 ix = 0; ix < tempStrArr.Length; ix++)
+                                         {
+                                             if (ix == 0)
+                                             {
+                                                 tempStrArr[ix] = strArr[0] + " " + strArr[1];
+                                             }
+                                             else
+                                             {
+                                                 tempStrArr[ix] = strArr[ix + 1];
+                                             }
+                                         }
+                                         data.Add(tempStrArr);
+                                     }
+                                     str = reader.ReadLine();
+                                 }
+
+                                 MemoryStream templateMs = new MemoryStream(TextToExcel.Properties.Resources.Template_xlsx, false);
+                                 ExcelExportUtil.Export(fbd.SelectedPath, filename.ToString().Replace(".txt", ".xlsx"), data, templateMs);
+
+                                 reader.Close();
+                                 fileMs.Close();
+                                 _connection.Close();
+
+                             }, file));
+                    }
+
+                    // 开始任务
+                    foreach (Task t in taskList)
+                    {
+                        t.Start();
+                    }
+
+                    // 判断任务是否处理完成
+                    bool flag = true;
+                    while (flag)
+                    {
+                        int i = 0;
+                        for (; i < taskList.Count; i++)
+                        {
+                            if (!taskList[i].IsCompleted)
                             {
-                                FilterChain chain = new FilterChain().AddFilter(new NameAndIdCardFilter())
-                                                                     .AddFilter(new KeywordFilter());
-                                string outStr;
-                                if (chain.DoFilter(str, out outStr))
-                                {
-                                    string[] strArr = Regex.Split(outStr, " ");
-                                    string[] tempStrArr = new string[strArr.Length - 1];
-                                    for (int ix = 0; ix < tempStrArr.Length; ix++)
-                                    {
-                                        if (ix == 0)
-                                        {
-                                            tempStrArr[ix] = strArr[0] + " " + strArr[1];
-                                        }
-                                        else
-                                        {
-                                            tempStrArr[ix] = strArr[ix + 1];
-                                        }
-                                    }
-                                    data.Add(tempStrArr);
-                                }
-                                str = reader.ReadLine();
+                                break;
                             }
+                        }
+                        if (i == taskList.Count)
+                        {
+                            break;
+                        }
+                    }
+                    _LoadWindow.LabelTip.Content = "导出成功";
+                    _LoadWindow.Close();
+                }));
 
-                            MemoryStream templateMs = new MemoryStream(TextToExcel.Properties.Resources.Template, false);
-                            ExcelExportUtil.Export(fbd.SelectedPath, filename.ToString().Replace(".txt", ".xls"), data, templateMs);
+                // 异步调用加载动画
+                _LoadWindow.ShowDialog();
 
-                            reader.Close();
-                            fileMs.Close();
-                            _connection.Close();
-
-                        }, file).Start();
-                }
                 connection.Close();
             }
             else
@@ -237,6 +279,15 @@ namespace TextToExcel.ViewModel
                                             TextToExcel.Properties.Resources.ExportMessageBoxTitle,
                                             MessageBoxButton.OK,
                                             MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (!_IniConfUtil.IsExistForConfFile())
+            {
+                System.Windows.MessageBox.Show(mainWindow, TextToExcel.Properties.Resources.ConfFileIsNotExist,
+                            TextToExcel.Properties.Resources.ExportMessageBoxTitle,
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Warning);
                 return false;
             }
 

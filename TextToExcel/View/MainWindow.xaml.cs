@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using TextToExcel.Test;
 using TextToExcel.View;
 using TextToExcel.ViewModel;
 
