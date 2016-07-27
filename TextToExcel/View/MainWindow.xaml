@@ -3,30 +3,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:res="clr-namespace:TextToExcel.Properties" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextToExcel.View.Control"
         mc:Ignorable="d" x:Class="TextToExcel.MainWindow" Name="MainWin"
-        d:DesignHeight="100" d:DesignWidth="540">
-    <StackPanel>
+        d:DesignHeight="100" d:DesignWidth="450">
+    <Grid>
+        <StackPanel>
+            <!-- 菜单 -->
+            <Menu>
+                <MenuItem Header="FTP配置" Click="FTPConfClick"/>
+            </Menu>
 
-        <!-- 菜单 -->
-        <Menu>
-            <MenuItem Header="FTP配置" Click="FTPConfClick"/>
-        </Menu>
-
-        <StackPanel Margin="5,10,5,0">
-            <!-- 条件筛选 -->
-            <WrapPanel Margin="0,0,0,10">
-                <WrapPanel Margin="10,0,10,0">
-                    <Label Content="开始日期:"/>
-                    <DatePicker Name="StartDatePicker" Width="100"/>
+            <StackPanel Margin="5,10,5,0">
+                <!-- 条件筛选 -->
+                <WrapPanel Margin="0,0,0,10">
+                    <WrapPanel Margin="10,0,10,0">
+                        <Label Content="开始日期:"/>
+                        <DatePicker Name="StartDatePicker" Width="100"/>
+                    </WrapPanel>
+                    <WrapPanel Margin="10,0,10,0">
+                        <Label Content="结束日期:"/>
+                        <DatePicker Name="EndDatePicker" Width="100"/>
+                    </WrapPanel>
+                    <!--<Button Width="50" BorderBrush="#FFC7C7C7" Margin="10,0,10,0" Content="预览" Command="{Binding PreviewCommand}" CommandParameter="{Binding ElementName=MainWin}"/>-->
+                    <Button Width="50" BorderBrush="#FFC7C7C7" Margin="10,0,10,0" Content="导出" Click="ExportClick"/>
                 </WrapPanel>
-                <WrapPanel Margin="10,0,10,0">
-                    <Label Content="结束日期:"/>
-                    <DatePicker Name="EndDatePicker" Width="100"/>
-                </WrapPanel>
-                <Button Width="50" BorderBrush="#FFC7C7C7" Margin="10,0,10,0" Content="预览" Command="{Binding PreviewCommand}" CommandParameter="{Binding ElementName=MainWin}"/>
-                <Button Width="50" BorderBrush="#FFC7C7C7" Margin="10,0,10,0" Content="导出" Command="{Binding ExportCommand}" CommandParameter="{Binding ElementName=MainWin}"/>
-            </WrapPanel>
+            </StackPanel>
         </StackPanel>
-        
-    </StackPanel>
+        <Grid Name="_loadGrid"  Background="Transparent" DockPanel.Dock="Bottom" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.5"  DockPanel.Dock="Bottom"></Grid>
+            <TextBlock Name="_loadText"  Text="加载中" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#eeeeee" FontSize="10"/>
+            <local:LoadControl x:Name="_loadCtl" Visibility="Collapsed"/>
+        </Grid>
+    </Grid>
 </Window>

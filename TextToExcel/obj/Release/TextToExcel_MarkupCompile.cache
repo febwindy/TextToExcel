@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\App.xaml
-3-891310394
+3-329944824
 
-211566978009
+20-1070582216
 202060620916
-View\ConfWindow.xaml;View\LoadWindow.xaml;View\MainWindow.xaml;
+View\ConfWindow.xaml;View\Control\LoadControl.xaml;View\MainWindow.xaml;
 
 False
 

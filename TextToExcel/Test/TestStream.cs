@@ -87,7 +87,7 @@ namespace TextToExcel.Test
             }
             FileStream file = File.OpenWrite(@"F:\VerifyResult_2016-06-27.txt");
             StreamWriter writer = new StreamWriter(file, Encoding.UTF8);
-            for (int i = 0; i < 1000000; i++)
+            for (int i = 0; i < 500000; i++)
             {
                 writer.WriteLine("2016/6/27 14:07:27  史专扬_231002198004171038.jpg  0.61  通过  正例");
             }

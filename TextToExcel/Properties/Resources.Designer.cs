@@ -88,6 +88,15 @@ namespace TextToExcel.Properties {
         }
         
         /// <summary>
+        ///   查找类似 FTP服务器中没有满足该日期的文件数据 的本地化字符串。
+        /// </summary>
+        public static string ExportNoFilesInFTP {
+            get {
+                return ResourceManager.GetString("ExportNoFilesInFTP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 100 的本地化字符串。
         /// </summary>
         public static string MainWindowHeight {
@@ -97,7 +106,7 @@ namespace TextToExcel.Properties {
         }
         
         /// <summary>
-        ///   查找类似 pack://application:,,,/Resources/Images/ordering.png 的本地化字符串。
+        ///   查找类似 pack://application:,,,/Resources/Images/application.ico 的本地化字符串。
         /// </summary>
         public static string MainWindowIcon {
             get {
@@ -115,7 +124,7 @@ namespace TextToExcel.Properties {
         }
         
         /// <summary>
-        ///   查找类似 540 的本地化字符串。
+        ///   查找类似 465 的本地化字符串。
         /// </summary>
         public static string MainWindowWidth {
             get {

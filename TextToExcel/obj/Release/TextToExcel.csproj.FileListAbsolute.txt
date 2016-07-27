@@ -10,11 +10,15 @@ C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Release\NPOI.OOXML.dll
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Release\NPOI.OpenXml4Net.dll
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Release\NPOI.OpenXmlFormats.dll
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\bin\Release\NPOI.xml
+C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\TextToExcel.csprojResolveAssemblyReference.cache
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\View\ConfWindow.baml
+C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\View\Control\LoadControl.baml
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\App.baml
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\View\ConfWindow.g.cs
+C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\View\Control\LoadControl.g.cs
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\View\MainWindow.g.cs
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\App.g.cs
+C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\GeneratedInternalTypeHelper.g.cs
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\TextToExcel_MarkupCompile.cache
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\TextToExcel_MarkupCompile.lref
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\View\MainWindow.baml
@@ -25,6 +29,3 @@ C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\TextToExcel.exe.man
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\TextToExcel.application
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\TextToExcel.exe
 C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\TextToExcel.pdb
-C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\TextToExcel.csprojResolveAssemblyReference.cache
-C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\View\LoadWindow.baml
-C:\Users\liwenhe\Desktop\TextToExcel\TextToExcel\obj\Release\View\LoadWindow.g.cs

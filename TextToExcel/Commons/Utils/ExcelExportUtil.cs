@@ -96,5 +96,25 @@ namespace TextToExcel.Commons.Utils
             workbook.Close();
             template.Close();
         }
+
+        /// <summary>
+        /// Excel导出方法
+        /// </summary>
+        /// <param name="path">存放路径</param>
+        /// <param name="filename">文件名称</param>
+        /// <param name="workbook">NOPI excel文档流</param>
+        public static void Export(string path, string filename, IWorkbook workbook)
+        {
+            // 处理文件名与路径
+            filename = (null != filename) ? filename : DateTime.Now.ToString("yyyyMMddHHmmss");
+            string filepath = (-1 != path.IndexOf(@"/")) ? path + @"/" + filename : path + @"\" + filename;
+
+            // 输出文件
+            FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write);
+            workbook.Write(fs);
+
+            fs.Close();
+            workbook.Close();
+        }
     }
 }

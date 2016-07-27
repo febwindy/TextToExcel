@@ -1,38 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TextToExcel.View
+namespace TextToExcel.View.Control
 {
     /// <summary>
-    /// LoadWindow.xaml 的交互逻辑
-    /// 作者:李文禾
+    /// LoadControl.xaml 的交互逻辑
     /// </summary>
-    public partial class LoadWindow : Window
+    public partial class LoadControl : UserControl
     {
-        public Label LabelTip;
+        private readonly Storyboard sb = new Storyboard();
 
-        public LoadWindow()
+        public LoadControl()
         {
             InitializeComponent();
-            this.Icon = new BitmapImage(new Uri(TextToExcel.Properties.Resources.MainWindowIcon));
-            Init("加载中", 10, 10, Color.FromRgb(51,51,255), 6);
+            Init(10, 10, Color.FromRgb(51, 51, 255), 6);
         }
 
-        public LoadWindow(string tip, int elliWidth, int elliHeight, Color elliColor, int elliSize)
-        {
-            InitializeComponent();
-            this.Icon = new BitmapImage(new Uri(TextToExcel.Properties.Resources.MainWindowIcon));
-            Init(tip, elliWidth, elliHeight, elliColor, elliSize);
-        }
-
-        public void Init(string tip, int elliWidth, int elliHeight, Color elliColor, int elliSize)
+        public void Init(int elliWidth, int elliHeight, Color elliColor, int elliSize)
         {
             Canvas canvas = new Canvas();
             canvas.RenderTransformOrigin = new Point(0.5, 0.5);
@@ -67,20 +55,26 @@ namespace TextToExcel.View
 
             RotateTransform rotateTransform = new RotateTransform();
             canvas.RenderTransform = rotateTransform;
-            rotateTransform.BeginAnimation(RotateTransform.AngleProperty, animation);
+            //rotateTransform.BeginAnimation(RotateTransform.AngleProperty, animation);
+
+            sb.Children.Add(animation);
+            Storyboard.SetTarget(animation, canvas);
+            Storyboard.SetTargetProperty(animation, new PropertyPath("RenderTransform.Angle"));
 
             Grid grid = new Grid();
             grid.Children.Add(canvas);
 
-            LabelTip = new Label();
-            LabelTip.Content = tip;
-            LabelTip.Name = "LableTip";
-            LabelTip.FontWeight = FontWeights.Bold;
-            LabelTip.HorizontalAlignment = HorizontalAlignment.Center;
-            LabelTip.VerticalAlignment = VerticalAlignment.Center;
-            grid.Children.Add(LabelTip);
-
             this.Content = grid;
         }
+
+        private void HandleVisibleChanged(object sender,
+                            DependencyPropertyChangedEventArgs e)
+        {
+            bool isVisible = (bool)e.NewValue;
+            if (isVisible)
+                sb.Begin();
+            else
+                sb.Stop();
+        }  
     }
 }

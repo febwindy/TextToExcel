@@ -62,6 +62,12 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>application.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TextToExcel.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="edtFTPnet">
       <HintPath>..\..\edtftpnet-2.2.3\bin\edtFTPnet.dll</HintPath>
@@ -111,7 +117,6 @@
     <Compile Include="Commons\Utils\IniConfUtil.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\ConfModel.cs" />
-    <Compile Include="Model\VerifyResultModel.cs" />
     <Compile Include="Test\TestStream.cs" />
     <Compile Include="Commons\Utils\DateTimeUtil.cs" />
     <Compile Include="ViewModel\ConfViewModel.cs" />
@@ -120,7 +125,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LoadWindow.xaml">
+    <Page Include="View\Control\LoadControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,8 +140,8 @@
     <Compile Include="View\ConfWindow.xaml.cs">
       <DependentUpon>ConfWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LoadWindow.xaml.cs">
-      <DependentUpon>LoadWindow.xaml</DependentUpon>
+    <Compile Include="View\Control\LoadControl.xaml.cs">
+      <DependentUpon>LoadControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -174,9 +179,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\ordering.png" />
+    <Resource Include="Resources\Images\application.ico" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
@@ -193,6 +197,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="application.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

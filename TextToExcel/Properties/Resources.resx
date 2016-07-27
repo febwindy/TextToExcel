@@ -129,12 +129,16 @@
     <value>警告</value>
     <comment>导出时消息提示标题</comment>
   </data>
+  <data name="ExportNoFilesInFTP" xml:space="preserve">
+    <value>FTP服务器中没有满足该日期的文件数据</value>
+    <comment>FTP服务器中没有满足该日期的文件数据</comment>
+  </data>
   <data name="MainWindowHeight" xml:space="preserve">
     <value>100</value>
     <comment>主窗口高度</comment>
   </data>
   <data name="MainWindowIcon" xml:space="preserve">
-    <value>pack://application:,,,/Resources/Images/ordering.png</value>
+    <value>pack://application:,,,/Resources/Images/application.ico</value>
     <comment>icon</comment>
   </data>
   <data name="MainWindowTitle" xml:space="preserve">
@@ -142,7 +146,7 @@
     <comment>主窗口标题</comment>
   </data>
   <data name="MainWindowWidth" xml:space="preserve">
-    <value>540</value>
+    <value>465</value>
     <comment>主窗口宽度</comment>
   </data>
   <data name="StartAndEndDateTimeDiffTip" xml:space="preserve">
